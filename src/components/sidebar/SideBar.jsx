@@ -1,12 +1,12 @@
-import React from 'react';
-import '../../App.css';
+import "../../App.css";
+import Title from "./Title";
 
 const SideBar = () => {
-    return (
-        <aside className="sidebar">
-            
-        </aside>
-    );
+  return (
+    <aside className="sidebar">
+      <Title />
+    </aside>
+  );
 };
 
-export default SideBar; 
+export default SideBar;
