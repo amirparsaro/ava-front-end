@@ -1,6 +1,6 @@
 import "../../App.css";
-import SpeechIcon from "../../assets/images/speech.png";
-import ArchiveIcon from "../../assets/images/archive.png";
+import SpeechIcon from "../../assets/images/speech-icon.svg";
+import ArchiveIcon from "../../assets/images/archive-Icon.svg";
 import Title from "./Title";
 import Selector from "./Selector";
 
