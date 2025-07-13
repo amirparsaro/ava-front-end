@@ -4,10 +4,10 @@ import Icon from '../../assets/images/Icon.svg';
 
 const Title = () => {
     return (
-        <aside className="title">
-            <p>آوا</p>
+        <div className="title">
             <img src={Icon} alt="logo"></img>
-        </aside>
+            <p>آوا</p>
+        </div>
     );
 };
 
