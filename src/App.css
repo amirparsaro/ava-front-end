@@ -11,6 +11,7 @@
   flex-direction: row;
   font-family: IRANYekan, sans-serif;
   direction: rtl;
+  background-color: #ffffff;
 }
 
 .sidebar {
@@ -28,7 +29,6 @@
 .main-content {
   flex: 1;
   padding: 20px;
-  background-color: #f4f4f4;
 }
 
 .title {
@@ -77,5 +77,65 @@
   font-size: 16px;
 }
 
-.selector img {
+.main-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.main-title-container h1 {
+  color: #00ba9f;
+  font-size: 28px;
+  margin: 0;
+}
+
+.main-title-container p {
+  color: #969696;
+  width: 33%;
+  font-size: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  width: 100%;
+}
+
+.user-button {
+  width: 121px;
+  height: 37px;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 2px solid #00ba9f;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.user-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+}
+
+.user-title .user-icon {
+  width: auto;
+  height : 18.5px;
+}
+
+.user-title .drop-icon {
+  width: 9.79px;
+  height: auto;
+}
+
+.user-title p {
+  font-size: 15px;
+  font-family: IRANYekan, sans-serif;
+  color: #00BA9F;
+  margin: 0;
 }

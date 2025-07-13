@@ -2,7 +2,7 @@ import "../../../App.css";
 
 const MainTitle = () => {
   return (
-    <div class="main-title-container">
+    <div className="main-title-container">
       <h1>تبدیل گفتار به متن</h1>
       <p>
         آوا با استفاده از هزاران ساعت گفتار با صدای افراد مختلف، زبان فارسی را
