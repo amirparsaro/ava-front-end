@@ -224,7 +224,7 @@
   width: 51%;
   height: 55%;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .option-button {
@@ -249,4 +249,145 @@
 
 .option-button-container p {
   margin: 0;
+}
+
+.record-container {
+  height: 95%;
+  width: 95%;
+  border: 2px solid #00b5a0;
+  border-radius: 15px 0px 15px 15px;
+  top: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.record-button {
+  background-color: #00b5a0;
+  height: 62px;
+  width: 62px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.record-button:hover {
+  background-color: #00c69b;
+  scale: 1.05;
+}
+
+.record-button img {
+  width: 19.63px;
+  height: 32.72px;
+}
+
+.record-explanation {
+  text-align: center;
+  color: #969696;
+  width: 50%;
+}
+
+.upload-file-container {
+  height: 95%;
+  width: 95%;
+  border: 2px solid #118ad3;
+  border-radius: 15px 15px 15px 15px;
+  top: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.upload-file-button {
+  background-color: #118ad3;
+  height: 62px;
+  width: 62px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-file-button:hover {
+  background-color: #109df4;
+  scale: 1.05;
+}
+
+.upload-file-button img {
+  width: 29.92px;
+  height: 24.47px;
+}
+
+.upload-file-explanation {
+  text-align: center;
+  color: #969696;
+  width: 60%;
+}
+
+.link-container {
+  height: 95%;
+  width: 95%;
+  border: 2px solid #ff1654;
+  border-radius: 15px 15px 15px 15px;
+  top: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.link-explanation {
+  text-align: center;
+  color: #969696;
+  width: 60%;
+}
+
+.link-form {
+  position: relative;
+  width: 300px;
+}
+
+.link-form input {
+  direction: ltr;
+  width: 328px;
+  padding-left: 50px;
+  height: 46px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  border: 1px solid #ff1654;
+  transition: border 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+.link-form input:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.link-form button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -20px;
+  height: 30px;
+  width: 30px;
+  border: none;
+  background: #ff1654;
+  color: white;
+  padding: 0 10px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
