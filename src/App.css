@@ -29,6 +29,7 @@
 .main-content {
   flex: 1;
   padding: 20px;
+  position: relative;
 }
 
 .title {
@@ -99,33 +100,67 @@
 
 .header {
   display: flex;
-  flex-direction: row;
-  justify-content: end;
+  flex-direction: column;
+  align-items: end;
   width: 100%;
+  position: absolute;
+  left: 0;
+  margin-left: 30px;
 }
 
 .user-button {
   width: 121px;
   height: 37px;
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: 20px;
   border: 2px solid #00ba9f;
   background-color: #ffffff;
   cursor: pointer;
+  transition: border-radius 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
+}
+
+.user-button.open {
+  border-radius: 20px 20px 0px 0px;
+  border-bottom: none;
+}
+
+.user-button .drop-icon {
+  transition: 0.25s ease-in-out;
+}
+
+.user-button.open .drop-icon {
+  transform: rotate(180deg);
 }
 
 .user-title {
+  position: relative;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 7px;
-  margin: 0;
+  padding-bottom: 9px;
+}
+
+.user-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 7%;
+  width: 86%;
+  height: 2px;
+  background-color: #00ba9f;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease-in-out;
+}
+
+.user-button.open .user-title::after {
+  transform: scaleX(1);
 }
 
 .user-title .user-icon {
   width: auto;
-  height : 18.5px;
+  height: 18.5px;
 }
 
 .user-title .drop-icon {
@@ -136,6 +171,51 @@
 .user-title p {
   font-size: 15px;
   font-family: IRANYekan, sans-serif;
-  color: #00BA9F;
+  color: #00ba9f;
+  margin: 0;
+}
+
+.dropdown {
+  max-height: 0;
+  opacity: 0;
+  width: 121px;
+  border: 2px solid #00ba9f;
+  border-top: none;
+  border-radius: 15px 15px 15px 15px;
+  background-color: white;
+  padding: 0 5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: max-height 0.25s ease-in-out, padding 0.25s ease-in-out,
+              opacity 0.25s ease-in-out, border-radius 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.dropdown.open {
+  max-height: 121px;
+  opacity: 1;
+  padding: 5px;
+  border-radius: 0 0 15px 15px;
+}
+
+.logout-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+}
+
+.logout-title .logout-icon {
+  width: auto;
+  height: 18.5px;
+}
+
+.logout-title p {
+  font-size: 15px;
+  font-family: IRANYekan, sans-serif;
+  color: #00ba9f;
   margin: 0;
 }
