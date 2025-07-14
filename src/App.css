@@ -353,7 +353,7 @@
 
 .link-form {
   position: relative;
-  width: 300px;
+  width: 328px;
 }
 
 .link-form input {
@@ -377,7 +377,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: -20px;
+  left: 10px;
   height: 30px;
   width: 30px;
   border: none;
