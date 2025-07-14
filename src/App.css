@@ -147,7 +147,7 @@
   bottom: 0;
   left: 7%;
   width: 86%;
-  height: 2px;
+  height: 1px;
   background-color: #00ba9f;
   transform: scaleX(0);
   transform-origin: center;
@@ -188,7 +188,7 @@
   overflow: hidden;
   z-index: 1;
   transition: max-height 0.25s ease-in-out, padding 0.25s ease-in-out,
-              opacity 0.25s ease-in-out, border-radius 0.25s ease-in-out;
+    opacity 0.25s ease-in-out, border-radius 0.25s ease-in-out;
   cursor: pointer;
 }
 
@@ -217,5 +217,36 @@
   font-size: 15px;
   font-family: IRANYekan, sans-serif;
   color: #00ba9f;
+  margin: 0;
+}
+
+.upload-container {
+  width: 51%;
+  height: 55%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.option-button {
+  border: none;
+  font-family: IRANYekan, sans-serif;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 15px 15px 0 0;
+  flex-direction: column;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+
+.option-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+  padding: 5px;
+}
+
+.option-button-container p {
   margin: 0;
 }
