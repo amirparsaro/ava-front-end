@@ -577,4 +577,36 @@
   flex-direction: column;
   gap: 10px;
   height: 95%;
+  width: 90%;
+}
+
+.time-box-container {
+  width: 85%;
+  height: 62px;
+  direction: rtl;
+  display: grid;
+  grid-template-columns: 53px 77px 1fr;
+  justify-content: end;
+  align-items: center;
+  gap: 18px;
+  border-radius: 25px;
+  padding: 0 40px;
+  flex-shrink: 0;
+}
+.time-box-container p {
+  margin: 0;
+  font-size: 16px;
+  color: #000000;
+  font-family: IRANYekan, sans-serif;
+}
+
+.timed-text-container {
+  padding: 10px;
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
