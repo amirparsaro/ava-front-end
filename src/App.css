@@ -181,7 +181,7 @@
   width: 121px;
   border: 2px solid #00ba9f;
   border-top: none;
-  border-radius: 15px 15px 15px 15px;
+  border-radius: 20px;
   background-color: white;
   padding: 0 5px;
   position: relative;
@@ -196,7 +196,7 @@
   max-height: 121px;
   opacity: 1;
   padding: 5px;
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 20px 20px;
 }
 
 .logout-title {
@@ -227,13 +227,17 @@
   margin-top: 20px;
 }
 
+.option-container {
+  display: flex;
+}
+
 .option-button {
+  min-height: 48px;
   border: none;
   font-family: IRANYekan, sans-serif;
   font-size: 14px;
   padding: 10px;
   border-radius: 15px 15px 0 0;
-  flex-direction: column;
   cursor: pointer;
   transition: 0.25s ease-in-out;
 }
@@ -390,4 +394,187 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.text-control-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #d9d9d9;
+  justify-content: space-between;
+}
+
+.text-buttons-container {
+  display: flex;
+  gap: 10px;
+}
+
+.right-control-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 20px;
+  align-items: center;
+}
+
+.text-control-button {
+  background-color: #ffffff;
+  border: none;
+  font-family: IRANYekan, sans-serif;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  transition: 0.25s ease-in-out;
+}
+
+.text-control-button img {
+  width: 17px;
+  height: 17px;
+}
+.text-control-button.clicked {
+  border-bottom: 2px solid #000000;
+}
+
+.restart-button {
+  background-color: #118ad3;
+  border: none;
+  border-radius: 30px;
+  font-family: IRANYekan, sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  direction: ltr;
+  gap: 7px;
+  width: 112px;
+  height: 34px;
+  transition: 0.25s ease-in-out;
+}
+
+.restart-button:hover {
+  background-color: #109df4;
+}
+
+.restart-button p {
+  margin: 0;
+}
+
+.copy-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.copy-container img {
+  transition: 0.15s ease-in-out;
+}
+
+.copy-container img:hover {
+  scale: 1.05;
+}
+
+.player-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  direction: ltr;
+  background-color: #f8f8f8;
+  padding: 0 20px;
+  font-family: IRANYekan, sans-serif;
+  border-radius: 10px;
+  height: 34px;
+}
+
+.play-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar {
+  width: 66%;
+  height: 2px;
+  background-color: #c6c6c6;
+  position: relative;
+}
+
+.progress-filled {
+  height: 100%;
+  width: 50%;
+  background-color: #118ad3;
+}
+
+.progress-handle {
+  width: 14px;
+  height: 14px;
+  background-color: #118ad3;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.volume-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.volume-bar {
+  width: 50px;
+  height: 2px;
+  background-color: #c6c6c6;
+  position: relative;
+}
+
+.filled-volume-bar {
+  height: 100%;
+  width: 70%;
+  background-color: #118ad3;
+}
+
+.simple-text-container {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 0;
+}
+
+.simple-text-container p {
+  color: #000000;
+  font-size: 16px;
+  text-align: right;
+  font-family: IRANYekan, sans-serif;
+  margin: 0;
+}
+
+.text-review-container {
+  height: 95%;
+  width: 95%;
+  border: 2px solid #118ad3;
+  border-radius: 15px;
+  top: -2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.review-padding {
+  padding: 20px;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  height: 95%;
 }

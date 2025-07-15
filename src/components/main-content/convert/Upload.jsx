@@ -3,6 +3,8 @@ import Option from "./Option";
 import UploadFile from "./UploadFile";
 import Record from "./Record";
 import Link from "./Link";
+import Player from "./Player";
+import TextControl from "./TextControl";
 import { useState } from "react";
 import lightMicIcon from "../../../assets/images/mic-Icon-white.svg";
 import darkMicIcon from "../../../assets/images/mic-Icon-grey.svg";
@@ -10,6 +12,7 @@ import lightUploadIcon from "../../../assets/images/upload-Icon-white.svg";
 import darkUploadIcon from "../../../assets/images/upload-Icon-grey.svg";
 import lightChainIcon from "../../../assets/images/chain-Icon-white.svg";
 import darkChainIcon from "../../../assets/images/chain-Icon-grey.svg";
+import TextReview from "./TextReview";
 
 const Upload = () => {
   const [option, setOption] = useState(1);
@@ -42,7 +45,7 @@ const Upload = () => {
         />
       </div>
 
-      <Link />
+      <TextReview />
     </div>
   );
 };
