@@ -3,6 +3,15 @@ export function toPersianDigits(input) {
 }
 
 export function timeToPersianDigits(input) {
-  var timeParts = input.split(":");
-  return toPersianDigits(timeParts[0]) + ":" + toPersianDigits(timeParts[1]);
+  return input
+    .split(":")
+    .map(toPersianDigits)
+    .join(":");
+}
+
+export function dateToPersianDigits(input) {
+  return input
+    .split("-")
+    .map(toPersianDigits)
+    .join("-");
 }

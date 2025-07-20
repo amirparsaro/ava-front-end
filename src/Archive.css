@@ -1,0 +1,103 @@
+@font-face {
+  font-family: "IRANYekan";
+  src: url("./assets/fonts/IRANYekan.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.archive-table-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.archive-title {
+  margin-top: 3%;
+  margin-right: 11%;
+}
+
+.archive-title h1 {
+  font-family: "IRANYekan";
+  font-size: 24px;
+  color: #00ba9f;
+}
+
+.archive-table {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  width: 86%;
+  justify-content: center;
+}
+
+.archive-table-header {
+  display: grid;
+  grid-template-columns: 7.7% 46% 14% 10% 8% 3% 3% 3% 3%;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.archive-table-header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.archive-table-row-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.archive-table-row {
+  border-radius: 10px;
+  height: 55px;
+  display: grid;
+  grid-template-columns: 7.7% 46% 14% 10% 8% 3% 3% 3% 3%;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+  align-items: center;
+}
+
+.archive-table-row:hover {
+  background-color: #fefefe;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.archive-table-row p {
+  font-family: IRANYekan;
+  color: #000000;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.row-first {
+  font-size: 16px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  text-align: right;
+}
+
+.archive-table-row img,
+.archive-table-header img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  cursor: pointer;
+}
+
+.archive-table-row img:first-child {
+  cursor: auto;
+}
+
+.archive-table-header p {
+  width: fit-content;
+}
+
+.hoverable {
+  transition: 0.25s ease-in-out;
+}

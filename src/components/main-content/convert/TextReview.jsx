@@ -10,7 +10,7 @@ const TextReview = () => {
       <div className="review-padding">
         <TextControl />
         <TimedText />
-        <Player />
+        <Player color="#118ad3" />
       </div>
     </div>
   );
