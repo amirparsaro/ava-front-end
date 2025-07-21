@@ -1,7 +1,7 @@
 import "../../../Archive.css";
 import leftArrowIcon from "../../../assets/images/left-arrow-Icon.svg";
 import rightArrowIcon from "../../../assets/images/right-arrow-Icon.svg";
-import { toPersianDigits } from "../../../utilities/utils";
+import { toPersianDigits } from "../../../utils/utils";
 
 const NavigationBox = () => {
   return (

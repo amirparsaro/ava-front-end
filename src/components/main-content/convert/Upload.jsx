@@ -15,7 +15,7 @@ import darkChainIcon from "../../../assets/images/chain-Icon-grey.svg";
 import TextReview from "./TextReview";
 import { Outlet } from "react-router-dom";
 
-const Upload = () => {
+const Upload = ({ filePack }) => {
   const [option, setOption] = useState(1);
   return (
     <div className="upload-container">
@@ -49,7 +49,7 @@ const Upload = () => {
         />
       </div>
 
-      <Outlet />
+      <Outlet filePack={filePack} />
     </div>
   );
 };

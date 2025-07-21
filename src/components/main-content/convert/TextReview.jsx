@@ -5,12 +5,12 @@ import Player from "./Player";
 import TimedText from "./TimedText";
 import { Outlet } from "react-router-dom";
 
-const TextReview = () => {
+const TextReview = ({ filePack }) => {
   return (
     <div className="text-review-container">
       <div className="review-padding">
         <TextControl />
-        <Outlet />
+        <Outlet filePack={filePack} />
         <Player color="#118ad3" />
       </div>
     </div>

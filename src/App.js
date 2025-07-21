@@ -8,8 +8,6 @@ import Language from "./components/main-content/Language";
 import ArchiveTitle from "./components/main-content/archive/ArchiveTitle";
 import ArchiveGrid from "./components/main-content/archive/ArchiveGrid";
 import NavigationBox from "./components/main-content/archive/NavigationBox";
-import MainContent from "./components/main-content/convert/MainContent";
-import MainArchive from "./components/main-content/archive/MainArchive";
 import UploadFile from "./components/main-content/convert/UploadFile";
 import Record from "./components/main-content/convert/Record";
 import Link from "./components/main-content/convert/Link";
@@ -17,40 +15,12 @@ import TextReview from "./components/main-content/convert/TextReview";
 import { Routes, Route, Navigate } from "react-router-dom";
 import TimedText from "./components/main-content/convert/TimedText";
 import SimpleText from "./components/main-content/convert/SimpleText";
+import Archive from "./components/main-content/Archive";
 
 function App() {
   return (
     <div className="App">
-      <SideBar />
-      <div className="main-content">
-        <UserDropDown />
-
-        <Routes>
-          <Route path="/" element={<Navigate to="/convert/upload/record" />} />
-          <Route
-            path="/convert/upload/review"
-            element={<Navigate to="/convert/upload/review/simple" />}
-          />
-
-          <Route path="/convert" element={<MainContent />}>
-            <Route path="upload" element={<Upload />}>
-              <Route path="record" element={<Record />} />
-              <Route path="upload-file" element={<UploadFile />} />
-              <Route path="link" element={<Link />} />
-              <Route path="review" element={<TextReview />}>
-                <Route path="timed" element={<TimedText />} />
-                <Route path="simple" element={<SimpleText />} />
-              </Route>
-            </Route>
-          </Route>
-
-          <Route path="/archive" element={<MainArchive />}>
-            <Route path=":id" element={<MainArchive />} />
-            <Route path=":id/simple" element={<MainArchive />} />
-            <Route path=":id/timed" element={<MainArchive />} />
-          </Route>
-        </Routes>
-      </div>
+      <Archive />
     </div>
   );
 }
