@@ -3,20 +3,47 @@ import leftArrowIcon from "../../../assets/images/left-arrow-Icon.svg";
 import rightArrowIcon from "../../../assets/images/right-arrow-Icon.svg";
 import { toPersianDigits } from "../../../utils/utils";
 
-const NavigationBox = () => {
+const NavigationBox = ({ currentPage, totalPages, onPageChange }) => {
+  const pageNumbers = [];
+
+  const maxPagesToShow = 5;
+  const startPage = Math.max(currentPage - 2, 1);
+  const endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);
+
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <div className="flex justify-center items-center h-[25px] mt-[50px]">
-      <div className="w-1/4 flex justify-center items-center h-full gap-3 number-text">
-        <img src={rightArrowIcon} alt="right-arrow-icon"></img>
-        <p>{toPersianDigits("1")}</p>
-        <p className="exclude-pointer">...</p>
-        <p>{toPersianDigits("123")}</p>
-        <p className="bg-[#07B49B] rounded-full text-white p-1">{toPersianDigits("124")}</p>
-        <p>{toPersianDigits("125")}</p>
-        <p>{toPersianDigits("126")}</p>
-        <p className="exclude-pointer">...</p>
-        <p>{toPersianDigits("356")}</p>
-        <img src={leftArrowIcon} alt="left-arrow-icon"></img>
+    <div className="flex justify-center items-center h-[25px] mt-[50px] ">
+      <div className="w-1/4 flex justify-center items-center h-full gap-2 number-text">
+        <img
+          src={rightArrowIcon}
+          alt="right-arrow-icon"
+          onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
+          className="cursor-pointer"
+        />
+
+        {startPage > 1 && <p className="exclude-pointer">...</p>}
+
+        {pageNumbers.map((page) => (
+          <p
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`cursor-pointer ${page === currentPage ? "bg-[#07B49B] rounded-full text-white px-3 py-1" : " px-3 py-1"}`}
+          >
+            {toPersianDigits(page.toString())}
+          </p>
+        ))}
+
+        {endPage < totalPages && <p className="exclude-pointer">...</p>}
+
+        <img
+          src={leftArrowIcon}
+          alt="left-arrow-icon"
+          onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
+          className="cursor-pointer"
+        />
       </div>
     </div>
   );
