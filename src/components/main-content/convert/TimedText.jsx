@@ -1,7 +1,7 @@
 import "../../../App.css";
 import TimeBox from "./TimeBox";
 
-import { timeToPersianDigits } from "../../../utilities/utils";
+import { timeToPersianDigits } from "../../../utils/utils";
 
 const timeData = [
   { start: "00:00", end: "00:03", text: "[با]" },
@@ -13,7 +13,7 @@ const timeData = [
   { start: "00:17", end: "00:20", text: "[---]" },
 ];
 
-const TimedText = () => {
+const TimedText = ({ filePack }) => {
   return (
     <div className="timed-text-container">
   {timeData.map((item, index) => (

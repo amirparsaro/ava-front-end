@@ -1,6 +1,6 @@
 import "../../../App.css";
 
-const SimpleText = () => {
+const SimpleText = ({ filePack }) => {
     return (
         <div className="simple-text-container">
             <p>
