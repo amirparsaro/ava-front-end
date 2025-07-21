@@ -21,7 +21,7 @@ const Upload = () => {
     <div className="upload-container">
       <div className="option-container">
         <Option
-          to="/"
+          to="/convert/upload/record"
           title="ضبط صدا"
           isSelected={option === 1}
           onClick={() => setOption(1)}
