@@ -9,7 +9,6 @@ const MainArchive = ({ filePack }) => {
     <div>
       <ArchiveTitle />
       <ArchiveGrid filePack={filePack} />
-      <NavigationBox />
     </div>
   );
 };

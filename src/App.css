@@ -602,7 +602,7 @@
   grid-template-columns: 53px 77px 1fr;
   justify-content: end;
   align-items: center;
-  gap: 18px;
+  gap: 40px;
   border-radius: 25px;
   padding: 0 40px;
   flex-shrink: 0;

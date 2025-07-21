@@ -8,6 +8,12 @@ import copyIcon from "../../../assets/images/copy-Icon-grey.svg";
 import copyIconHover from "../../../assets/images/copy-Icon-hover.svg";
 import deleteIcon from "../../../assets/images/del-Btn-grey.svg";
 import deleteIconHover from "../../../assets/images/del-Btn-hover.svg";
+import recordBtn from "../../../assets/images/record-Btn.svg";
+import linkBtn from "../../../assets/images/link-Btn.svg";
+import uploadBtn from "../../../assets/images/upload-Btn.svg";
+import { dateToPersianDigits } from "../../../utils/utils";
+import { toPersianDigits } from "../../../utils/utils";
+import { timeToPersianDigits } from "../../../utils/utils";
 
 const ArchiveRow = ({ file }) => {
   const [hoverDownload, setHoverDownload] = useState(false);
@@ -15,14 +21,27 @@ const ArchiveRow = ({ file }) => {
   const [hoverDelete, setHoverDelete] = useState(false);
   const [hoverWord, setHoverWord] = useState(false);
 
+  function handleUploadTypeIcon(uploadType) {
+    switch (uploadType) {
+      case "record":
+        return recordBtn;
+      case "link":
+        return linkBtn;
+      case "upload":
+        return uploadBtn;
+      default:
+        return null;
+    }
+  }
+
   return (
     <div className="archive-table-row-wrapper">
       <div className="archive-table-row">
-        <img src={file.icon} alt="icon" />
+        <img src={handleUploadTypeIcon(file.uploadType)} alt="icon" />
         <p className="row-first">{file.name}</p>
         <p>{file.date}</p>
         <p>{file.type}</p>
-        <p>{file.duration}</p>
+        <p>{timeToPersianDigits(file.duration)}</p>
         <img className="hoverable"
           src={hoverDownload ? downloadIconHover : downloadIcon}
           onMouseEnter={() => setHoverDownload(true)}
