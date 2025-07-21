@@ -2,15 +2,32 @@ import "../../App.css";
 import UserIcon from "../../assets/images/user-Icon.svg";
 import DropIcon from "../../assets/images/drop-Icon.svg";
 import LogoutIcon from "../../assets/images/logout.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const Language = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState("فارسی");
   const [isClickable, setClickable] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (
+      location.pathname === "/convert/upload/review/simple" ||
+      location.pathname === "/convert/upload/review/timed"
+    ) {
+      setClickable(false);
+    } else {
+      setClickable(true);
+    }
+  }, [location.pathname]);
 
   return (
-    <div className={isClickable ? "language-button" : "language-button unclickable"}>
+    <div
+      className={
+        isClickable ? "language-button" : "language-button unclickable"
+      }
+    >
       <div className="language-text">
         <p>زبان گفتار:</p>
       </div>
