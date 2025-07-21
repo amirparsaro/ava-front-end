@@ -101,3 +101,11 @@
 .hoverable {
   transition: 0.25s ease-in-out;
 }
+
+.number-text p, .number-text img {
+  @apply cursor-pointer;
+}
+
+.exclude-pointer {
+  @apply cursor-default !important;
+}

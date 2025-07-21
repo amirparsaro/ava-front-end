@@ -7,22 +7,24 @@ import Upload from "./components/main-content/convert/Upload";
 import Language from "./components/main-content/Language";
 import ArchiveTitle from "./components/main-content/archive/ArchiveTitle";
 import ArchiveGrid from "./components/main-content/archive/ArchiveGrid";
+import NavigationBox from "./components/main-content/archive/NavigationBox";
 
 function App() {
   return (
     <div className="App">
       <SideBar />
-      <div className="main-content">
+      {/* <div className="main-content">
         <UserDropDown />
         <MainTitle />
         <Upload />
         <Language />
-      </div>
-      {/* <div className="main-content">
+      </div> */}
+      <div className="main-content">
         <UserDropDown />
         <ArchiveTitle />
         <ArchiveGrid />
-      </div> */}
+        <NavigationBox />
+      </div>
     </div>
   );
 }
