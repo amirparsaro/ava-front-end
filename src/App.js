@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import SideBar from "./components/sidebar/SideBar";
+import MainTitle from "./components/main-content/convert/MainTitle";
+import UserDropDown from "./components/main-content/UserDropDown";
+import Upload from "./components/main-content/convert/Upload";
+import Language from "./components/main-content/Language";
+import ArchiveTitle from "./components/main-content/archive/ArchiveTitle";
+import ArchiveGrid from "./components/main-content/archive/ArchiveGrid";
+import NavigationBox from "./components/main-content/archive/NavigationBox";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar />
+      {/* <div className="main-content">
+        <UserDropDown />
+        <MainTitle />
+        <Upload />
+        <Language />
+      </div> */}
+      <div className="main-content">
+        <UserDropDown />
+        <ArchiveTitle />
+        <ArchiveGrid />
+        <NavigationBox />
+      </div>
     </div>
   );
 }
