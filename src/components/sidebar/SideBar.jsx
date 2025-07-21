@@ -10,8 +10,8 @@ const SideBar = () => {
       <Title />
       
       <div className="selector-container">
-        <Selector title="تبدیل گفتار" icon={SpeechIcon} />
-        <Selector title="آرشیو" icon={ArchiveIcon} />
+        <Selector title="تبدیل گفتار" icon={SpeechIcon} to="/"/>
+        <Selector title="آرشیو" icon={ArchiveIcon} to="/archive"/>
       </div>
     </aside>
   );

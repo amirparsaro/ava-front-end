@@ -258,7 +258,7 @@
 }
 
 .record-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #00b5a0;
   border-radius: 15px 0px 15px 15px;
@@ -300,7 +300,7 @@
 }
 
 .upload-file-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #118ad3;
   border-radius: 15px 15px 15px 15px;
@@ -342,7 +342,7 @@
 }
 
 .link-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #ff1654;
   border-radius: 15px 15px 15px 15px;
@@ -566,7 +566,7 @@
 }
 
 .text-review-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #118ad3;
   border-radius: 15px;
@@ -621,7 +621,7 @@
 }
 
 .language-button {
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   direction: ltr;
   flex-direction: row;
