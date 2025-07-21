@@ -12,16 +12,17 @@ function App() {
   return (
     <div className="App">
       <SideBar />
-      {/* <div className="main-content">
+      <div className="main-content">
         <UserDropDown />
         <MainTitle />
         <Upload />
-      </div> */}
-      <div className="main-content">
+        <Language />
+      </div>
+      {/* <div className="main-content">
         <UserDropDown />
         <ArchiveTitle />
         <ArchiveGrid />
-      </div>
+      </div> */}
     </div>
   );
 }

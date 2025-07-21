@@ -6,25 +6,30 @@ import { useState } from "react";
 
 const Language = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [language, setLanguage] = useState("فارسی");
+  const [isClickable, setClickable] = useState(true);
 
   return (
-    <div className="header">
-      <button
-        className={isOpen ? "user-button open" : "user-button"}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <div className="user-title">
-          <img src={UserIcon} alt="user-icon" className="user-icon"></img>
-          <p>مهمان</p>
-          <img src={DropIcon} alt="drop-icon" className="drop-icon"></img>
-        </div>
-      </button>
-      <button className={isOpen ? "dropdown open" : "dropdown"}>
-        <div className="logout-title">
-          <img src={LogoutIcon} alt="user-icon" className="logout-icon"></img>
-          <p>خروج</p>
-        </div>
-      </button>
+    <div className={isClickable ? "language-button" : "language-button unclickable"}>
+      <div className="language-text">
+        <p>زبان گفتار:</p>
+      </div>
+      <div className="footer">
+        <button
+          className={isOpen ? "user-button open" : "user-button"}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <div className="user-title">
+            <img src={DropIcon} alt="drop-icon" className="drop-icon"></img>
+            <p>فارسی</p>
+          </div>
+        </button>
+        <button className={isOpen ? "dropdown open" : "dropdown"}>
+          <div className="logout-title">
+            <p>انگلیسی</p>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };

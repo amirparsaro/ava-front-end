@@ -140,13 +140,13 @@
   justify-content: center;
   align-items: center;
   gap: 7px;
-  padding-bottom: 9px;
+  /* padding-bottom: 9px; */
 }
 
 .user-title::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -6.5px;
   left: 7%;
   width: 86%;
   height: 1px;
@@ -617,4 +617,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.language-button {
+  margin-top: 50px;
+  display: flex;
+  direction: ltr;
+  flex-direction: row;
+  align-items: start;
+  width: 73%;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.language-text {
+  font-family: IRANYekan, sans-serif;
+  color: #626262;
+  font-size: 14px;
+  margin-left: 135px;
+  direction: rtl;
+  margin-top: 8px;
+}
+
+.unclickable {
+  pointer-events: none;
+  opacity: 0.5;
+  user-select: none;
 }
