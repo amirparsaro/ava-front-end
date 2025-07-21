@@ -71,6 +71,11 @@
   scale: 1.05;
 }
 
+.selector.clicked {
+  background-color: #0000005c;
+  transition: 0.25s ease-in-out;
+}
+
 .selector p {
   margin: 0;
   color: #ffffff;
