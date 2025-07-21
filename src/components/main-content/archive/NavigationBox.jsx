@@ -10,8 +10,8 @@ const NavigationBox = () => {
         <img src={rightArrowIcon} alt="right-arrow-icon"></img>
         <p>{toPersianDigits("1")}</p>
         <p className="exclude-pointer">...</p>
-        <p className="bg-[#07B49B] rounded-full text-white p-1">{toPersianDigits("123")}</p>
-        <p>{toPersianDigits("124")}</p>
+        <p>{toPersianDigits("123")}</p>
+        <p className="bg-[#07B49B] rounded-full text-white p-1">{toPersianDigits("124")}</p>
         <p>{toPersianDigits("125")}</p>
         <p>{toPersianDigits("126")}</p>
         <p className="exclude-pointer">...</p>

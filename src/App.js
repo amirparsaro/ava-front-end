@@ -15,6 +15,8 @@ import Record from "./components/main-content/convert/Record";
 import Link from "./components/main-content/convert/Link";
 import TextReview from "./components/main-content/convert/TextReview";
 import { Routes, Route, Navigate } from "react-router-dom";
+import TimedText from "./components/main-content/convert/TimedText";
+import SimpleText from "./components/main-content/convert/SimpleText";
 
 function App() {
   return (
@@ -25,32 +27,30 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Navigate to="/convert/upload/record" />} />
+          <Route
+            path="/convert/upload/review"
+            element={<Navigate to="/convert/upload/review/simple" />}
+          />
 
           <Route path="/convert" element={<MainContent />}>
             <Route path="upload" element={<Upload />}>
               <Route path="record" element={<Record />} />
               <Route path="upload-file" element={<UploadFile />} />
               <Route path="link" element={<Link />} />
-              <Route path="review" element={<TextReview />} />
+              <Route path="review" element={<TextReview />}>
+                <Route path="timed" element={<TimedText />} />
+                <Route path="simple" element={<SimpleText />} />
+              </Route>
             </Route>
           </Route>
 
-          <Route path="/archive" element={<MainArchive />} />
+          <Route path="/archive" element={<MainArchive />}>
+            <Route path=":id" element={<MainArchive />} />
+            <Route path=":id/simple" element={<MainArchive />} />
+            <Route path=":id/timed" element={<MainArchive />} />
+          </Route>
         </Routes>
       </div>
-      {/* <div className="main-content">
-        <UserDropDown />
-        <MainTitle />
-        <Upload />
-        <Language />
-      </div>
-
-      <div className="main-content">
-        <UserDropDown />
-        <ArchiveTitle />
-        <ArchiveGrid />
-        <NavigationBox />
-      </div> */}
     </div>
   );
 }

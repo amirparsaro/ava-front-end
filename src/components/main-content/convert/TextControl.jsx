@@ -21,6 +21,7 @@ const TextControl = () => {
           greyIcon={GreyTextIcon}
           blackIcon={BlackTextIcon}
           isSelected={option === 1}
+          pathname={"/convert/upload/review/simple"}
         />
 
         <TextControlButton
@@ -29,6 +30,7 @@ const TextControl = () => {
           greyIcon={GreyTimeIcon}
           blackIcon={BlackTimeIcon}
           isSelected={option === 2}
+          pathname={"/convert/upload/review/timed"}
         />
       </div>
       <div class="right-control-buttons">
