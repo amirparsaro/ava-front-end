@@ -13,6 +13,7 @@ import darkUploadIcon from "../../../assets/images/upload-Icon-grey.svg";
 import lightChainIcon from "../../../assets/images/chain-Icon-white.svg";
 import darkChainIcon from "../../../assets/images/chain-Icon-grey.svg";
 import TextReview from "./TextReview";
+import { Outlet } from "react-router-dom";
 
 const Upload = () => {
   const [option, setOption] = useState(1);
@@ -20,6 +21,7 @@ const Upload = () => {
     <div className="upload-container">
       <div className="option-container">
         <Option
+          to="/"
           title="ضبط صدا"
           isSelected={option === 1}
           onClick={() => setOption(1)}
@@ -28,6 +30,7 @@ const Upload = () => {
           color="#00BA9F"
         />
         <Option
+          to="/convert/upload/upload-file"
           title="بارگذاری فایل"
           isSelected={option === 2}
           onClick={() => setOption(2)}
@@ -36,6 +39,7 @@ const Upload = () => {
           color="#118AD3"
         />
         <Option
+          to="/convert/upload/link"
           title="لینک"
           isSelected={option === 3}
           onClick={() => setOption(3)}
@@ -45,7 +49,7 @@ const Upload = () => {
         />
       </div>
 
-      <TextReview />
+      <Outlet />
     </div>
   );
 };
