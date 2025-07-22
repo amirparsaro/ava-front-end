@@ -8,23 +8,19 @@ import Language from "./components/main-content/Language";
 import ArchiveTitle from "./components/main-content/archive/ArchiveTitle";
 import ArchiveGrid from "./components/main-content/archive/ArchiveGrid";
 import NavigationBox from "./components/main-content/archive/NavigationBox";
+import UploadFile from "./components/main-content/convert/UploadFile";
+import Record from "./components/main-content/convert/Record";
+import Link from "./components/main-content/convert/Link";
+import TextReview from "./components/main-content/convert/TextReview";
+import { Routes, Route, Navigate } from "react-router-dom";
+import TimedText from "./components/main-content/convert/TimedText";
+import SimpleText from "./components/main-content/convert/SimpleText";
+import Archive from "./components/main-content/Archive";
 
 function App() {
   return (
     <div className="App">
-      <SideBar />
-      {/* <div className="main-content">
-        <UserDropDown />
-        <MainTitle />
-        <Upload />
-        <Language />
-      </div> */}
-      <div className="main-content">
-        <UserDropDown />
-        <ArchiveTitle />
-        <ArchiveGrid />
-        <NavigationBox />
-      </div>
+      <Archive />
     </div>
   );
 }

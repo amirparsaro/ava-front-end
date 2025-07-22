@@ -71,6 +71,11 @@
   scale: 1.05;
 }
 
+.selector.clicked {
+  background-color: #0000005c;
+  transition: 0.25s ease-in-out;
+}
+
 .selector p {
   margin: 0;
   color: #ffffff;
@@ -258,7 +263,7 @@
 }
 
 .record-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #00b5a0;
   border-radius: 15px 0px 15px 15px;
@@ -300,7 +305,7 @@
 }
 
 .upload-file-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #118ad3;
   border-radius: 15px 15px 15px 15px;
@@ -342,7 +347,7 @@
 }
 
 .link-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #ff1654;
   border-radius: 15px 15px 15px 15px;
@@ -566,7 +571,7 @@
 }
 
 .text-review-container {
-  height: 95%;
+  height: 390px;
   width: 95%;
   border: 2px solid #118ad3;
   border-radius: 15px;
@@ -597,7 +602,7 @@
   grid-template-columns: 53px 77px 1fr;
   justify-content: end;
   align-items: center;
-  gap: 18px;
+  gap: 40px;
   border-radius: 25px;
   padding: 0 40px;
   flex-shrink: 0;
@@ -621,7 +626,7 @@
 }
 
 .language-button {
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   direction: ltr;
   flex-direction: row;
