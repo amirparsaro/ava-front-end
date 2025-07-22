@@ -73,9 +73,15 @@ function convertTofileArray(requestObj) {
 }
 
 function checkUploadType(url) {
-  if (url.includes("recorded-audio5834")) {
+  const lowerUrl = url.toLowerCase();
+  if (lowerUrl.includes("rec")) {
     return "record";
-  } else if (url.includes("harf.roshan-ai.ir/media/files")) {
+  } else if (
+    lowerUrl.includes("tmp") ||
+    lowerUrl.includes("temp") ||
+    lowerUrl.includes("upload") ||
+    lowerUrl.includes("roshan-ai")
+  ) {
     return "upload";
   } else {
     return "link";
