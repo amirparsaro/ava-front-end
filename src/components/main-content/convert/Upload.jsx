@@ -5,7 +5,7 @@ import Record from "./Record";
 import Link from "./Link";
 import Player from "./Player";
 import TextControl from "./TextControl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import lightMicIcon from "../../../assets/images/mic-Icon-white.svg";
 import darkMicIcon from "../../../assets/images/mic-Icon-grey.svg";
 import lightUploadIcon from "../../../assets/images/upload-Icon-white.svg";
@@ -17,6 +17,14 @@ import { Outlet } from "react-router-dom";
 
 const Upload = ({ filePack }) => {
   const [option, setOption] = useState(1);
+
+  const isInReviewPage = window.location.pathname.endsWith("review");
+  useEffect(() => {
+    if (isInReviewPage) {
+      setOption(2);
+    }
+  });
+
   return (
     <div className="upload-container">
       <div className="option-container">
@@ -29,6 +37,7 @@ const Upload = ({ filePack }) => {
           darkIcon={darkMicIcon}
           color="#00BA9F"
         />
+
         <Option
           to="/convert/upload/upload-file"
           title="بارگذاری فایل"
@@ -38,6 +47,7 @@ const Upload = ({ filePack }) => {
           darkIcon={darkUploadIcon}
           color="#118AD3"
         />
+
         <Option
           to="/convert/upload/link"
           title="لینک"
@@ -49,7 +59,7 @@ const Upload = ({ filePack }) => {
         />
       </div>
 
-      <Outlet filePack={filePack} />
+      <Outlet />
     </div>
   );
 };

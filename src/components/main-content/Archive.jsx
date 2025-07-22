@@ -390,20 +390,13 @@ const Archive = () => {
 
         <Routes>
           <Route path="/" element={<Navigate to="/convert/upload/record" />} />
-          <Route
-            path="/convert/upload/review"
-            element={<Navigate to="/convert/upload/review/simple" />}
-          />
 
           <Route path="/convert" element={<MainContent filePack={filePack} />}>
             <Route path="upload" element={<Upload />}>
               <Route path="record" element={<Record />} />
               <Route path="upload-file" element={<UploadFile />} />
               <Route path="link" element={<Link />} />
-              <Route path="review" element={<TextReview />}>
-                <Route path="timed" element={<TimedText />} />
-                <Route path="simple" element={<SimpleText />} />
-              </Route>
+              <Route path="review" element={<TextReview />} />
             </Route>
           </Route>
 
