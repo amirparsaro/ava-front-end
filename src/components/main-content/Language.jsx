@@ -13,8 +13,7 @@ const Language = () => {
 
   useEffect(() => {
     if (
-      location.pathname === "/convert/upload/review/simple" ||
-      location.pathname === "/convert/upload/review/timed"
+      location.pathname === "/convert/upload/review"
     ) {
       setClickable(false);
     } else {
