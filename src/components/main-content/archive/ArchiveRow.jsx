@@ -18,7 +18,7 @@ import DeleteModal from "./DeleteModal";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { saveAs } from "file-saver";
 import { Alert, Snackbar, Button } from "@mui/material";
-import CheckIcon from '@mui/icons-material/Check';
+import CheckIcon from "@mui/icons-material/Check";
 
 const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
   const [hoverDownload, setHoverDownload] = useState(false);
@@ -72,6 +72,9 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
     });
   }
 
+  const time = file?.duration ?? "";
+  const duration = timeToPersianDigits(time);
+
   return (
     <div className="archive-table-row-wrapper">
       <Snackbar
@@ -99,7 +102,7 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
         <p className="row-first">{file.name}</p>
         <p>{dateToPersianDigits(file.date)}</p>
         <p>{getFileExtension(file.name)}</p>
-        <p>{timeToPersianDigits(file.duration)}</p>
+        <p>{duration}</p>
 
         <img
           className="hoverable"
