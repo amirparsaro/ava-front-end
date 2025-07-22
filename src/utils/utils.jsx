@@ -16,7 +16,7 @@ export function dateToPersianDigits(input) {
     .join("-");
 }
 
-function getFileExtension(filePath) {
+export function getFileExtension(filePath) {
   if (typeof filePath !== 'string') return null;
 
   const lastDotIndex = filePath.lastIndexOf('.');

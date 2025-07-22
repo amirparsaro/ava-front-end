@@ -20,6 +20,7 @@ import linkBtn from "../../assets/images/link-Btn.svg";
 import uploadBtn from "../../assets/images/upload-Btn.svg";
 import { dateToPersianDigits } from "../../utils/utils";
 import { toPersianDigits } from "../../utils/utils";
+import { getFileExtension } from "../../utils/utils";
 import { useState } from "react";
 import "../../App.css";
 import "../../index.css";
@@ -32,7 +33,6 @@ const Archive = () => {
       uploadType: "link",
       name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20Khosravi%20%7C%20Tanha%20Nazar%20(320).mp3",
       date: "1400-08-21",
-      type: ".mp3",
       duration: "4:29",
       segments: [
         {
@@ -57,7 +57,6 @@ const Archive = () => {
       uploadType: "upload",
       name: "khaterate To",
       date: "1400-08-20",
-      type: ".mp4",
       duration: "4:28",
       segments: [
         {
@@ -82,7 +81,6 @@ const Archive = () => {
       uploadType: "link",
       name: "https://dls.loudmusic.ir/Music/1401/01/Baraye%20-Shervin%20Hajipour%20[loudmusic.ir]-320.mp3",
       date: "1400-08-20",
-      type: ".wav",
       duration: "3:14",
       segments: [
         {
@@ -107,7 +105,6 @@ const Archive = () => {
       uploadType: "record",
       name: "پادکست رادیو راه - فصل دوم -قسمت ششم- راه سروش",
       date: "1400-08-19",
-      type: ".mp3",
       duration: "1:28:18",
       segments: [
         {
@@ -137,7 +134,6 @@ const Archive = () => {
       uploadType: "link",
       name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20Khosravi%20%7C%20Tanha%20Nazar%20(320).mp3",
       date: "1400-08-21",
-      type: ".mp3",
       duration: "1:28:18",
       segments: [
         {
@@ -162,7 +158,6 @@ const Archive = () => {
       uploadType: "upload",
       name: "khaterate To",
       date: "1400-08-20",
-      type: ".mp4",
       duration: "4:28",
       segments: [
         {
@@ -187,7 +182,6 @@ const Archive = () => {
       uploadType: "link",
       name: "https://dls.loudmusic.ir/Music/1401/01/Baraye%20-Shervin%20Hajipour%20[loudmusic.ir]-320.mp3",
       date: "1400-08-20",
-      type: ".wav",
       duration: "4:14",
       segments: [
         {
@@ -212,7 +206,6 @@ const Archive = () => {
       uploadType: "record",
       name: "پادکست رادیو راه - فصل دوم -قسمت ششم- راه سروش",
       date: "1400-08-19",
-      type: ".mp3",
       duration: "1:28:18",
       segments: [
         {
@@ -242,7 +235,6 @@ const Archive = () => {
       uploadType: "upload",
       name: "Random Song 1",
       date: "1400-08-22",
-      type: ".mp3",
       duration: "2:45",
       segments: [
         {
@@ -267,7 +259,6 @@ const Archive = () => {
       uploadType: "link",
       name: "https://example.com/music/random2.mp3",
       date: "1400-08-23",
-      type: ".mp3",
       duration: "3:30",
       segments: [
         {
@@ -292,7 +283,6 @@ const Archive = () => {
       uploadType: "record",
       name: "پادکست تصادفی",
       date: "1400-08-24",
-      type: ".wav",
       duration: "0:58:00",
       segments: [
         {
@@ -317,7 +307,6 @@ const Archive = () => {
       uploadType: "upload",
       name: "Random Video",
       date: "1400-08-25",
-      type: ".mp4",
       duration: "5:00",
       segments: [
         {
@@ -342,7 +331,6 @@ const Archive = () => {
       uploadType: "link",
       name: "https://example.com/music/random5.mp3",
       date: "1400-08-26",
-      type: ".mp3",
       duration: "4:10",
       segments: [
         {

@@ -116,7 +116,7 @@ const ArchiveGrid = ({ filePack }) => {
                   )}
 
                   <div onClick={() => onClickItem(index)}>
-                    <ArchiveRow file={file} />
+                    <ArchiveRow file={file} deleteFile={deleteFile} setSelectedIndex={setSelectedIndex} />
                   </div>
 
                   {boxPosition === "bottom" && (
@@ -132,7 +132,7 @@ const ArchiveGrid = ({ filePack }) => {
                   className="transition-all duration-300"
                   onClick={() => onClickItem(index)}
                 >
-                  <ArchiveRow file={file} />
+                  <ArchiveRow file={file} deleteFile={deleteFile} setSelectedIndex={setSelectedIndex} />
                 </div>
               )}
             </div>
@@ -143,7 +143,10 @@ const ArchiveGrid = ({ filePack }) => {
       <NavigationBox
         currentPage={currentPage}
         totalPages={Math.ceil(files.length / itemsPerPage)}
-        onPageChange={(page) => setCurrentPage(page)}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+          setSelectedIndex(null);
+        }}
       />
     </div>
   );
