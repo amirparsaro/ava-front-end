@@ -11,7 +11,7 @@ const Record = () => {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "recorded-audio.wav";
+    a.download = "recorded-audio5834.wav";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
