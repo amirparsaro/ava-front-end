@@ -13,6 +13,21 @@ import { Alert, Snackbar, Button } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 
 const TextControl = ({ file, onOptionChange }) => {
+  const handleDownload = (file) => {
+    fetch(file.url)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = file.url;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      })
+      .catch((err) => {
+        console.error("Download failed:", err);
+      });
+  };
+
   const [option, setOption] = useState(1);
   const [openAlert, setOpenAlert] = useState(false);
 
@@ -80,7 +95,11 @@ const TextControl = ({ file, onOptionChange }) => {
       </div>
       <div class="right-control-buttons">
         <div class="copy-container">
-          <img src={downloadIcon} alt="download-icon"></img>
+          <img
+            src={downloadIcon}
+            alt="download-icon"
+            onClick={() => handleDownload(file)}
+          ></img>
           <img
             src={copyIcon}
             alt="copy-icon"

@@ -4,10 +4,13 @@ import TimeBox from "./TimeBox";
 import { timeToPersianDigits } from "../../../utils/utils";
 
 const TimedText = ({ file }) => {
+  if (!file || !Array.isArray(file.segments)) {
+    return <p>در حال بارگذاری... </p>;
+  }
+
   return (
     <div className="timed-text-container">
-      {
-      file.segments.map((item, index) => (
+      {file.segments.map((item, index) => (
         <TimeBox
           key={index}
           startTime={timeToPersianDigits(item.start)}
