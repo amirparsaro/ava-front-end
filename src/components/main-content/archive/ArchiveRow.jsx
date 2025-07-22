@@ -37,7 +37,6 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
       .then((blob) => {
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
-        console.log(file.name);
         a.download = file.name;
         a.click();
         URL.revokeObjectURL(a.href);
@@ -64,7 +63,6 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
       if (contentRange) {
         const totalBytes = contentRange.split("/")[1];
         const sizeInMB = Number(totalBytes) / (1024 * 1024);
-        console.log(`File size: ${sizeInMB.toFixed(2)} MB`);
         return sizeInMB;
       } else {
         return null;
@@ -128,7 +126,7 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
     });
 
     Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, file.name.split + ".docx");
+      saveAs(blob, file.name + ".docx");
     });
   }
 

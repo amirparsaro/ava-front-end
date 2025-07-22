@@ -13,10 +13,14 @@ import darkUploadIcon from "../../../assets/images/upload-Icon-grey.svg";
 import lightChainIcon from "../../../assets/images/chain-Icon-white.svg";
 import darkChainIcon from "../../../assets/images/chain-Icon-grey.svg";
 import TextReview from "./TextReview";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { InputContext } from "./InputContext";
 
-const Upload = ({ filePack }) => {
+
+const Upload = () => {
   const [option, setOption] = useState(1);
+  const [inputValue, setInputValue] = useState(null);
+  const navigate = useNavigate();
 
   const isInReviewPage = window.location.pathname.endsWith("review");
   useEffect(() => {
@@ -25,7 +29,13 @@ const Upload = ({ filePack }) => {
     }
   });
 
+  function handleInputValue(value) {
+    setInputValue(value);
+    navigate("/convert/upload/review");
+  }
+
   return (
+    <InputContext.Provider value={{ handleInputValue, inputValue }}>
     <div className="upload-container">
       <div className="option-container">
         <Option
@@ -61,6 +71,7 @@ const Upload = ({ filePack }) => {
 
       <Outlet />
     </div>
+    </InputContext.Provider>
   );
 };
 
