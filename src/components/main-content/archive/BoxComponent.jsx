@@ -9,7 +9,7 @@ import TimedText from "../convert/TimedText";
 import Player from "../convert/Player";
 import { useState } from "react";
 
-const BoxComponent = ({ boxHeightCount, color }) => {
+const BoxComponent = ({ file, boxHeightCount, color }) => {
   const [option, setOption] = useState(1);
 
   return (
@@ -19,7 +19,7 @@ const BoxComponent = ({ boxHeightCount, color }) => {
         height: `${boxHeightCount * 55}px`,
       }}
     >
-      <div class="text-buttons-container mr-5">
+      <div className="text-buttons-container mr-5">
         <TextControlButton
           text="متن ساده"
           onClick={() => setOption(1)}
@@ -36,7 +36,8 @@ const BoxComponent = ({ boxHeightCount, color }) => {
           isSelected={option === 2}
         />
       </div>
-      <TimedText />
+      {option === 1 ? <SimpleText file={file} /> : null}
+      {option === 2 ? <TimedText file={file} /> : null}
       <div className="flex justify-center">
         <div className="flex justify-center w-3/4 my-2">
           <Player color={color} />

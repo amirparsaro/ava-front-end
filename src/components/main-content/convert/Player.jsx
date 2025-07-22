@@ -3,7 +3,7 @@ import pauseIcon from "../../../assets/images/pause.svg";
 import stopIcon from "../../../assets/images/Stop.svg";
 import volumeIcon from "../../../assets/images/volume-icon.svg";
 
-import { timeToPersianDigits } from "../../../utilities/utils";
+import { timeToPersianDigits } from "../../../utils/utils";
 
 const Player = ({ color }) => {
   return (

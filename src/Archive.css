@@ -8,7 +8,10 @@
 .archive-table-wrapper {
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
 }
 .archive-title {
   margin-top: 3%;
@@ -108,4 +111,14 @@
 
 .exclude-pointer {
   @apply cursor-default !important;
+}
+
+.icon-size {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.alert-text {
+  font-family: "IRANYekan";
+  margin: 0px 15px;
 }

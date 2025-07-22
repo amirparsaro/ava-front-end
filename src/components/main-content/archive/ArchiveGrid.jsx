@@ -1,84 +1,40 @@
 import "../../../Archive.css";
-import { dateToPersianDigits } from "../../../utilities/utils";
-import { toPersianDigits } from "../../../utilities/utils";
+import { dateToPersianDigits } from "../../../utils/utils";
+import { toPersianDigits } from "../../../utils/utils";
 import { useState } from "react";
 import recordBtn from "../../../assets/images/record-Btn.svg";
 import linkBtn from "../../../assets/images/link-Btn.svg";
 import uploadBtn from "../../../assets/images/upload-Btn.svg";
 import ArchiveRow from "./ArchiveRow";
 import BoxComponent from "./BoxComponent";
+import NavigationBox from "./NavigationBox";
 
-const files = [
-  {
-    color: "#ff1654",
-    icon: linkBtn,
-    name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20Khosravi%20%7C%20Tanha%20Nazar%20(320).mp3",
-    date: dateToPersianDigits("1400-08-21"),
-    type: ".mp3",
-    duration: toPersianDigits("4:29"),
-  },
-  {
-    color: "#118ad3",
-    icon: uploadBtn,
-    name: "khaterate To",
-    date: dateToPersianDigits("1400-08-20"),
-    type: ".mp4",
-    duration: toPersianDigits("4:28"),
-  },
-  {
-    color: "#ff1654",
-    icon: linkBtn,
-    name: "https://dls.loudmusic.ir/Music/1401/01/Baraye%20-Shervin%20Hajipour%20[loudmusic.ir]-320.mp3",
-    date: dateToPersianDigits("1400-08-20"),
-    type: ".wav",
-    duration: toPersianDigits("3:14"),
-  },
-  {
-    color: "#00b5a0",
-    icon: recordBtn,
-    name: "پادکست رادیو راه - فصل دوم -قسمت ششم- راه سروش",
-    date: dateToPersianDigits("1400-08-19"),
-    type: ".mp3",
-    duration: toPersianDigits("1:28:18"),
-  },
-  {
-    color: "#ff1654",
-    icon: linkBtn,
-    name: "https://irsv.upmusics.com/Downloads/Musics/Sirvan%20Khosravi%20%7C%20Tanha%20Nazar%20(320).mp3",
-    date: dateToPersianDigits("1400-08-21"),
-    type: ".mp3",
-    duration: toPersianDigits("1:28:18"),
-  },
-  {
-    color: "#118ad3",
-    icon: uploadBtn,
-    name: "khaterate To",
-    date: dateToPersianDigits("1400-08-20"),
-    type: ".mp4",
-    duration: toPersianDigits("4:28"),
-  },
-  {
-    color: "#ff1654",
-    icon: linkBtn,
-    name: "https://dls.loudmusic.ir/Music/1401/01/Baraye%20-Shervin%20Hajipour%20[loudmusic.ir]-320.mp3",
-    date: dateToPersianDigits("1400-08-20"),
-    type: ".wav",
-    duration: toPersianDigits("4:14"),
-  },
-  {
-    color: "#00b5a0",
-    icon: recordBtn,
-    name: "پادکست رادیو راه - فصل دوم -قسمت ششم- راه سروش",
-    date: dateToPersianDigits("1400-08-19"),
-    type: ".mp3",
-    duration: toPersianDigits("1:28:18"),
-  },
-];
+const ArchiveGrid = ({ filePack }) => {
+  const { files = [], addFile, deleteFile, updateFile, getFile } = filePack;
 
-const ArchiveGrid = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedFiles = files.slice(startIndex, endIndex);
+
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [boxPosition, setBoxPosition] = useState("bottom");
   const [boxHeightCount, setBoxHeightCount] = useState(5);
+
+  function handleUploadTypeColor(uploadType) {
+    switch (uploadType) {
+      case "record":
+        return "#00b5a0";
+      case "link":
+        return "#ff1654";
+      case "upload":
+        return "#118ad3";
+      default:
+        return null;
+    }
+  }
 
   const onClickItem = (index) => {
     if (selectedIndex === index) {
@@ -139,29 +95,35 @@ const ArchiveGrid = () => {
           </div>
         </div>
 
-        {files.map((file, index) =>
-          shouldRender(index) ? (
-            <div key={index}>
+        {paginatedFiles.map((file, index) => {
+          const globalIndex = startIndex + index;
+
+          return shouldRender(index) ? (
+            <div key={globalIndex}>
               {index === selectedIndex ? (
                 <div
                   className="rounded-xl border-2 overflow-hidden"
-                  style={{ borderColor: file.color }}
+                  style={{
+                    borderColor: handleUploadTypeColor(file.uploadType),
+                  }}
                 >
                   {boxPosition === "top" && (
                     <BoxComponent
+                      file={file}
                       boxHeightCount={boxHeightCount}
-                      color={file.color}
+                      color={handleUploadTypeColor(file.uploadType)}
                     />
                   )}
 
                   <div onClick={() => onClickItem(index)}>
-                    <ArchiveRow file={file} />
+                    <ArchiveRow file={file} deleteFile={deleteFile} setSelectedIndex={setSelectedIndex} />
                   </div>
 
                   {boxPosition === "bottom" && (
                     <BoxComponent
+                      file={file}
                       boxHeightCount={boxHeightCount}
-                      color={file.color}
+                      color={handleUploadTypeColor(file.uploadType)}
                     />
                   )}
                 </div>
@@ -170,13 +132,22 @@ const ArchiveGrid = () => {
                   className="transition-all duration-300"
                   onClick={() => onClickItem(index)}
                 >
-                  <ArchiveRow file={file} />
+                  <ArchiveRow file={file} deleteFile={deleteFile} setSelectedIndex={setSelectedIndex} />
                 </div>
               )}
             </div>
-          ) : null
-        )}
+          ) : null;
+        })}
       </div>
+
+      <NavigationBox
+        currentPage={currentPage}
+        totalPages={Math.ceil(files.length / itemsPerPage)}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+          setSelectedIndex(null);
+        }}
+      />
     </div>
   );
 };

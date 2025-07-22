@@ -15,3 +15,14 @@ export function dateToPersianDigits(input) {
     .map(toPersianDigits)
     .join("-");
 }
+
+export function getFileExtension(filePath) {
+  if (typeof filePath !== 'string') return null;
+
+  const lastDotIndex = filePath.lastIndexOf('.');
+  if (lastDotIndex === -1 || lastDotIndex === filePath.length - 1) {
+    return null;
+  }
+
+  return filePath.substring(lastDotIndex + 1).toLowerCase();
+}
