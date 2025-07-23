@@ -98,14 +98,21 @@ const TextControl = ({ file, onOptionChange }) => {
           <img
             src={downloadIcon}
             alt="download-icon"
-            onClick={() => handleDownload(file)}
+            onClick={() => {
+              if (file) handleDownload(file);
+              else console.error("File does not exist.")
+            }}
           ></img>
           <img
             src={copyIcon}
             alt="copy-icon"
             onClick={() => {
-              navigator.clipboard.writeText(formatText(file));
-              handleClickAlert();
+              if (file) {
+                navigator.clipboard.writeText(formatText(file));
+                handleClickAlert();
+              } else {
+                console.error("File does not exist.");
+              }
             }}
           ></img>
         </div>

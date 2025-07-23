@@ -28,49 +28,6 @@ import "../../Archive.css";
 import { listRequests } from "../../service/api/listRequests.jsx";
 
 const Archive = () => {
-  const [files, setFiles] = useState([]);
-
-  useEffect(() => {
-    async function fetchFiles() {
-      const fetchedFiles = await listRequests();
-      if (fetchedFiles) {
-        setFiles(fetchedFiles);
-      }
-    }
-    fetchFiles();
-  }, []);
-
-
-  const addFile = (file) => {
-    setFiles((prev) => {
-      const maxId = prev.length > 0 ? Math.max(...prev.map((f) => f.id)) : 0;
-      const newFile = { id: maxId + 1, ...file };
-      return [...prev, newFile];
-    });
-  };
-
-  const deleteFile = (id) => {
-    setFiles((prev) => prev.filter((file) => file.id !== id));
-  };
-
-  const getFile = (id) => {
-    return files.find((file) => file.id === id);
-  };
-
-  const updateFile = (id, newData) => {
-    setFiles((prev) =>
-      prev.map((file) => (file.id === id ? { ...file, ...newData } : file))
-    );
-  };
-
-  const filePack = {
-    files,
-    addFile,
-    deleteFile,
-    getFile,
-    updateFile,
-  };
-
   return (
     <div className="flex justify-center w-full">
       <SideBar />
@@ -80,7 +37,7 @@ const Archive = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/convert/upload/record" />} />
 
-          <Route path="/convert" element={<MainContent filePack={filePack} />}>
+          <Route path="/convert" element={<MainContent />}>
             <Route path="upload" element={<Upload />}>
               <Route path="record" element={<Record />} />
               <Route path="upload-file" element={<UploadFile />} />
@@ -89,7 +46,7 @@ const Archive = () => {
             </Route>
           </Route>
 
-          <Route path="/archive" element={<MainArchive filePack={filePack} />}>
+          <Route path="/archive" element={<MainArchive />}>
             <Route path=":id" element={<MainArchive />} />
             <Route path=":id/simple" element={<MainArchive />} />
             <Route path=":id/timed" element={<MainArchive />} />
