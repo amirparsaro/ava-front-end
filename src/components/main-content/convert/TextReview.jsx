@@ -42,7 +42,7 @@ const TextReview = () => {
         />
         {option === 1 && <SimpleText file={uploadFile} />}
         {option === 2 && <TimedText file={uploadFile} />}
-        <Player color="#118ad3" />
+        {uploadFile != null && <Player color="#118ad3" file={uploadFile} />}
       </div>
     </div>
   );
