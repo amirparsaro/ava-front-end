@@ -40,7 +40,7 @@ const BoxComponent = ({ file, boxHeightCount, color }) => {
       {option === 2 ? <TimedText file={file} /> : null}
       <div className="flex justify-center">
         <div className="flex justify-center w-3/4 my-2">
-          <Player color={color} />
+          <Player color={color} file={file} />
         </div>
       </div>
     </div>
