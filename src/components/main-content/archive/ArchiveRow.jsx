@@ -20,6 +20,7 @@ import { saveAs } from "file-saver";
 import { Alert, Snackbar, Button } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import FileSize from "./FileSize";
+import { deleteRequest } from "../../../service/api/deleteRequest";
 
 const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
   const [hoverDownload, setHoverDownload] = useState(false);
@@ -130,6 +131,10 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
     });
   }
 
+  function deleteFileAPI(serverId) {
+    deleteRequest(serverId);
+  }
+
   const time = file?.duration ?? "";
   const duration = timeToPersianDigits(time);
 
@@ -227,6 +232,7 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
         onDelete={() => {
           setSelectedIndex(null);
           deleteFile(file.id);
+          deleteFileAPI(file.serverId);
           setOpenState(false);
         }}
       />

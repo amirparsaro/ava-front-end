@@ -2,7 +2,7 @@ import "../../../App.css";
 import { useRef } from "react";
 import lightUploadIcon from "../../../assets/images/upload-Icon-white.svg";
 
-const UploadButton = () => {
+const UploadButton = ({ onFileSelect }) => {
   const fileInputRef = useRef(null);
 
   const handleClick = () => {
@@ -11,6 +11,9 @@ const UploadButton = () => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    if (file && onFileSelect) {
+      onFileSelect(file);
+    }
   };
 
   return (

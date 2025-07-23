@@ -19,7 +19,7 @@ export async function sendToTranscribe(fileUrl) {
     return file;
 
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
