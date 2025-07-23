@@ -14,15 +14,22 @@ const TextReview = () => {
   const [option, setOption] = useState(1);
   const [uploadFile, setUploadFile] = useState(null);
 
+  async function fetchFile() {
+    setUploadFile(null);
+    const file = await sendToTranscribe(inputValue);
+    setUploadFile(file);
+  }
+
   const { inputValue } = useContext(InputContext);
   useEffect(() => {
-    async function fetchFile() {
-      const file = await sendToTranscribe(inputValue);
-      setUploadFile(file);
-    }
-
     fetchFile();
   }, [inputValue]);
+
+  function handleRestart(shouldRestart) {
+    if (shouldRestart) {
+      fetchFile();
+    }
+  }
 
   return (
     <div className="text-review-container">
@@ -31,6 +38,7 @@ const TextReview = () => {
           file={uploadFile}
           option={option}
           onOptionChange={setOption}
+          onRestart={handleRestart}
         />
         {option === 1 && <SimpleText file={uploadFile} />}
         {option === 2 && <TimedText file={uploadFile} />}

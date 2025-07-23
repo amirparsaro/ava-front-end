@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Alert, Snackbar, Button } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 
-const TextControl = ({ file, onOptionChange }) => {
+const TextControl = ({ file, onOptionChange, onRestart }) => {
   const handleDownload = (file) => {
     fetch(file.url)
       .then((res) => res.blob())
@@ -48,8 +48,12 @@ const TextControl = ({ file, onOptionChange }) => {
     setOpenAlert(false);
   };
 
+  function handleRestart() {
+    if (onRestart) onRestart(true);
+  }
+
   return (
-    <div class="text-control-container">
+    <div className="text-control-container">
       <Snackbar
         onClick={(e) => {
           e.stopPropagation();
@@ -70,7 +74,7 @@ const TextControl = ({ file, onOptionChange }) => {
         </Alert>
       </Snackbar>
 
-      <div class="text-buttons-container">
+      <div className="text-buttons-container">
         <TextControlButton
           text="متن ساده"
           onClick={() => {
@@ -93,14 +97,14 @@ const TextControl = ({ file, onOptionChange }) => {
           isSelected={option === 2}
         />
       </div>
-      <div class="right-control-buttons">
-        <div class="copy-container">
+      <div className="right-control-buttons">
+        <div className="copy-container">
           <img
             src={downloadIcon}
             alt="download-icon"
             onClick={() => {
               if (file) handleDownload(file);
-              else console.error("File does not exist.")
+              else console.error("File does not exist.");
             }}
           ></img>
           <img
@@ -117,7 +121,7 @@ const TextControl = ({ file, onOptionChange }) => {
           ></img>
         </div>
 
-        <button class="restart-button">
+        <button className="restart-button" onClick={handleRestart}>
           <p>شروع دوباره</p>
           <img src={restartIcon} alt="restart-icon"></img>
         </button>
