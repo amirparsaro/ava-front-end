@@ -1,13 +1,15 @@
 import "../../../App.css";
 import RecordButton from "./RecordButton";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { InputContext } from "./InputContext";
+import { useLocation } from "react-router-dom";
 
 const Record = () => {
   const [audioUrl, setAudioUrl] = useState(null);
   const [link, setLink] = useState("");
+  const location = useLocation();
 
-  const { handleInputValue } = useContext(InputContext);
+  const { handleInputValue, lastRoute } = useContext(InputContext);
 
   const handleUpload = async (file) => {
     if (!file) return;
@@ -44,6 +46,10 @@ const Record = () => {
 
     handleUpload(audioBlob);
   };
+
+  useEffect(() => {
+    lastRoute(location.pathname);
+  }, [location.pathname]);
 
   return (
     <div className="record-container">

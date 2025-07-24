@@ -10,6 +10,7 @@ const Player = ({ color, file }) => {
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(0.5);
+  const [isPlaying, setIsPLaying] = useState(false);
 
   function formatTime(seconds) {
     const min = Math.floor(seconds / 60);
@@ -49,10 +50,32 @@ const Player = ({ color, file }) => {
   }, []);
 
   useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handlePlay = () => setIsPLaying(true);
+    const handlePause = () => setIsPLaying(false);
+
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+
+    return () => {
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+    };
+  }, []);
+
+  useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+
+  function handleStop() {
+    audioRef.current?.pause();
+    audioRef.current.currentTime = 0;
+    setCurrentTime(0);
+  }
 
   const progressPercent = duration ? (currentTime / duration) * 100 : 0;
 
@@ -61,13 +84,17 @@ const Player = ({ color, file }) => {
       <audio ref={audioRef} src={file.url}></audio>
 
       <div className="play-buttons-container">
-        <img src={pauseIcon} alt="pause-icon" onClick={handlePause}></img>
-        <img
-          src={playIcon}
-          alt="play-icon"
-          className="h-[13px]"
-          onClick={handlePlay}
-        ></img>
+        <img src={stopIcon} alt="stop-icon" onClick={handleStop}></img>
+        {isPlaying ? (
+          <img src={pauseIcon} alt="pause-icon" onClick={handlePause} />
+        ) : (
+          <img
+            src={playIcon}
+            alt="play-icon"
+            className="h-[13px]"
+            onClick={handlePlay}
+          />
+        )}
       </div>
 
       <div

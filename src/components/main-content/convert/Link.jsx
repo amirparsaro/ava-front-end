@@ -1,15 +1,21 @@
 import { useState } from "react";
 import "../../../App.css";
 import LinkForm from "./LinkForm";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { InputContext } from "./InputContext";
+import { useLocation } from "react-router-dom";
 
 const Link = () => {
-  const { handleInputValue } = useContext(InputContext);
-  
+  const { handleInputValue, lastRoute } = useContext(InputContext);
+  const location = useLocation();
+
   function handleInputChange(value) {
     handleInputValue(value);
   }
+
+  useEffect(() => {
+    lastRoute(location.pathname);
+  }, [location.pathname]);
 
   return (
     <div className="link-container">
