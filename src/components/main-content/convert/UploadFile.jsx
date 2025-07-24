@@ -1,10 +1,16 @@
 import "../../../App.css";
 import UploadButton from "./UploadButton";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { InputContext } from "./InputContext";
+import { useLocation } from "react-router-dom";
 
 const UploadFile = () => {
-  const { handleInputValue } = useContext(InputContext);
+  const { handleInputValue, lastRoute } = useContext(InputContext);
+  const location = useLocation();
+
+  useEffect(() => {
+    lastRoute(location.pathname);
+  }, [location.pathname]);
 
   const handleUpload = async (file) => {
     if (!file) return;

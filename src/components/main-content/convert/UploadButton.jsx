@@ -18,7 +18,7 @@ const UploadButton = ({ onFileSelect }) => {
 
   return (
     <div>
-      <button class="upload-file-button" onClick={handleClick}>
+      <button className="upload-file-button" onClick={handleClick}>
         <img src={lightUploadIcon} alt="upload-file-button"></img>
       </button>
 

@@ -450,7 +450,6 @@
 }
 
 .restart-button {
-  background-color: #118ad3;
   border: none;
   border-radius: 30px;
   font-family: IRANYekan, sans-serif;
@@ -585,7 +584,6 @@
 .text-review-container {
   height: 390px;
   width: 95%;
-  border: 2px solid #118ad3;
   border-radius: 15px;
   top: -2px;
   display: flex;
