@@ -18,7 +18,7 @@ const TextControlButton = ({
 
   return (
     <button
-      class={isSelected ? "text-control-button clicked" : "text-control-button"}
+      className={isSelected ? "text-control-button clicked" : "text-control-button"}
       onClick={() => {
         onClick();
         goToPath();

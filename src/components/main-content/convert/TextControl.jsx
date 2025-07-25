@@ -8,13 +8,30 @@ import BlackTimeIcon from "../../../assets/images/time-icon-black.svg";
 import copyIcon from "../../../assets/images/copy-Icon.svg";
 import downloadIcon from "../../../assets/images/download-Icon.svg";
 import restartIcon from "../../../assets/images/Restart-icon.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Snackbar, Button } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
+import { useLocation } from "react-router-dom";
 
-const TextControl = ({ file, onOptionChange }) => {
+const TextControl = ({ file, onOptionChange, onRestart, color }) => {
+  const handleDownload = (file) => {
+    fetch(file.url)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = file.url;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      })
+      .catch((err) => {
+        console.error("Download failed:", err);
+      });
+  };
+
   const [option, setOption] = useState(1);
   const [openAlert, setOpenAlert] = useState(false);
+  const location = useLocation();
 
   function formatText(file) {
     let segments = "";
@@ -33,8 +50,20 @@ const TextControl = ({ file, onOptionChange }) => {
     setOpenAlert(false);
   };
 
+  function handleRestart() {
+    if (onRestart) onRestart(true);
+  }
+
+  useEffect(() => {
+    console.log(option);
+    if (location.pathname.endsWith("record")) setOption(1);
+    else if (location.pathname.endsWith("upload-file")) setOption(2);
+    else setOption(3);
+    console.log("useEffect ran", location.pathname);
+  }, [location.pathname]);
+
   return (
-    <div class="text-control-container">
+    <div className="text-control-container">
       <Snackbar
         onClick={(e) => {
           e.stopPropagation();
@@ -55,7 +84,7 @@ const TextControl = ({ file, onOptionChange }) => {
         </Alert>
       </Snackbar>
 
-      <div class="text-buttons-container">
+      <div className="text-buttons-container">
         <TextControlButton
           text="متن ساده"
           onClick={() => {
@@ -78,20 +107,35 @@ const TextControl = ({ file, onOptionChange }) => {
           isSelected={option === 2}
         />
       </div>
-      <div class="right-control-buttons">
-        <div class="copy-container">
-          <img src={downloadIcon} alt="download-icon"></img>
+      <div className="right-control-buttons">
+        <div className="copy-container">
+          <img
+            src={downloadIcon}
+            alt="download-icon"
+            onClick={() => {
+              if (file) handleDownload(file);
+              else console.error("File does not exist.");
+            }}
+          ></img>
           <img
             src={copyIcon}
             alt="copy-icon"
             onClick={() => {
-              navigator.clipboard.writeText(formatText(file));
-              handleClickAlert();
+              if (file) {
+                navigator.clipboard.writeText(formatText(file));
+                handleClickAlert();
+              } else {
+                console.error("File does not exist.");
+              }
             }}
           ></img>
         </div>
 
-        <button class="restart-button">
+        <button
+          className="restart-button"
+          onClick={handleRestart}
+          style={{ backgroundColor: color }}
+        >
           <p>شروع دوباره</p>
           <img src={restartIcon} alt="restart-icon"></img>
         </button>

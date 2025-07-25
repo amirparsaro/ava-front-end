@@ -8,10 +8,11 @@ import uploadBtn from "../../../assets/images/upload-Btn.svg";
 import ArchiveRow from "./ArchiveRow";
 import BoxComponent from "./BoxComponent";
 import NavigationBox from "./NavigationBox";
+import { useEffect } from "react";
+import { listRequests } from "../../../service/api/listRequests";
 
-const ArchiveGrid = ({ filePack }) => {
-  const { files = [], addFile, deleteFile, updateFile, getFile } = filePack;
-
+const ArchiveGrid = () => {
+  const [files, setFiles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
@@ -22,6 +23,38 @@ const ArchiveGrid = ({ filePack }) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [boxPosition, setBoxPosition] = useState("bottom");
   const [boxHeightCount, setBoxHeightCount] = useState(5);
+
+  useEffect(() => {
+    async function fetchFiles() {
+      const fetchedFiles = await listRequests();
+      if (fetchedFiles) {
+        setFiles(fetchedFiles);
+      }
+    }
+    fetchFiles();
+  }, []);
+
+  const addFile = (file) => {
+    setFiles((prev) => {
+      const maxId = prev.length > 0 ? Math.max(...prev.map((f) => f.id)) : 0;
+      const newFile = { id: maxId + 1, ...file };
+      return [...prev, newFile];
+    });
+  };
+
+  const deleteFile = (id) => {
+    setFiles((prev) => prev.filter((file) => file.id !== id));
+  };
+
+  const getFile = (id) => {
+    return files.find((file) => file.id === id);
+  };
+
+  const updateFile = (id, newData) => {
+    setFiles((prev) =>
+      prev.map((file) => (file.id === id ? { ...file, ...newData } : file))
+    );
+  };
 
   function handleUploadTypeColor(uploadType) {
     switch (uploadType) {
@@ -116,7 +149,11 @@ const ArchiveGrid = ({ filePack }) => {
                   )}
 
                   <div onClick={() => onClickItem(index)}>
-                    <ArchiveRow file={file} deleteFile={deleteFile} setSelectedIndex={setSelectedIndex} />
+                    <ArchiveRow
+                      file={file}
+                      deleteFile={deleteFile}
+                      setSelectedIndex={setSelectedIndex}
+                    />
                   </div>
 
                   {boxPosition === "bottom" && (
@@ -132,7 +169,11 @@ const ArchiveGrid = ({ filePack }) => {
                   className="transition-all duration-300"
                   onClick={() => onClickItem(index)}
                 >
-                  <ArchiveRow file={file} deleteFile={deleteFile} setSelectedIndex={setSelectedIndex} />
+                  <ArchiveRow
+                    file={file}
+                    deleteFile={deleteFile}
+                    setSelectedIndex={setSelectedIndex}
+                  />
                 </div>
               )}
             </div>
