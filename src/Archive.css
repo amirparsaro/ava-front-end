@@ -105,7 +105,8 @@
   transition: 0.25s ease-in-out;
 }
 
-.number-text p, .number-text img {
+.number-text p,
+.number-text img {
   @apply cursor-pointer;
 }
 
@@ -121,4 +122,36 @@
 .alert-text {
   font-family: "IRANYekan";
   margin: 0px 15px;
+}
+
+.font-iranyekan {
+  font-family: IRANYekan;
+  font-size: 12px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 100;
+  font-family: IRANYekan;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  top: 125%;
+  left: 230%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
 }

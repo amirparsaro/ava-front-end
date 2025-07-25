@@ -18,7 +18,9 @@ import DeleteModal from "./DeleteModal";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { saveAs } from "file-saver";
 import { Alert, Snackbar, Button } from "@mui/material";
-import CheckIcon from '@mui/icons-material/Check';
+import CheckIcon from "@mui/icons-material/Check";
+import FileSize from "./FileSize";
+import { deleteRequest } from "../../../service/api/deleteRequest";
 
 const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
   const [hoverDownload, setHoverDownload] = useState(false);
@@ -27,6 +29,63 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
   const [hoverWord, setHoverWord] = useState(false);
   const [OpenState, setOpenState] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
+  const [sizeMB, setSizeMB] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleDownload = (file) => {
+    fetch(file.url)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = file.name;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      })
+      .catch((err) => {
+        console.error("Download failed:", err);
+      });
+  };
+
+  async function getFileSize(url) {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Range: "bytes=0-0",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const contentRange = response.headers.get("Content-Range");
+      if (contentRange) {
+        const totalBytes = contentRange.split("/")[1];
+        const sizeInMB = Number(totalBytes) / (1024 * 1024);
+        return sizeInMB;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      return null;
+    }
+  }
+
+  const handleMouseEnter = () => {
+    setLoading(true);
+    getFileSize(file.url).then((size) => {
+      setSizeMB(size);
+      setLoading(false);
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setSizeMB(null);
+    setLoading(false);
+  };
 
   const handleClickAlert = () => {
     setOpenAlert(true);
@@ -72,6 +131,13 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
     });
   }
 
+  function deleteFileAPI(serverId) {
+    deleteRequest(serverId);
+  }
+
+  const time = file?.duration ?? "";
+  const duration = timeToPersianDigits(time);
+
   return (
     <div className="archive-table-row-wrapper">
       <Snackbar
@@ -99,18 +165,28 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
         <p className="row-first">{file.name}</p>
         <p>{dateToPersianDigits(file.date)}</p>
         <p>{getFileExtension(file.name)}</p>
-        <p>{timeToPersianDigits(file.duration)}</p>
+        <p>{duration}</p>
 
-        <img
-          className="hoverable"
-          src={hoverDownload ? downloadIconHover : downloadIcon}
-          onMouseEnter={() => setHoverDownload(true)}
-          onMouseLeave={() => setHoverDownload(false)}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          alt="download"
-        />
+        <div className="tooltip">
+          <img
+            className="hoverable"
+            src={hoverDownload ? downloadIconHover : downloadIcon}
+            onMouseEnter={() => {
+              setHoverDownload(true);
+              handleMouseEnter();
+            }}
+            onMouseLeave={() => {
+              setHoverDownload(false);
+              handleMouseLeave();
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDownload(file);
+            }}
+            alt="download"
+          />
+          <FileSize fileSize={sizeMB} loading={loading} />
+        </div>
 
         <img
           className="hoverable"
@@ -156,6 +232,7 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
         onDelete={() => {
           setSelectedIndex(null);
           deleteFile(file.id);
+          deleteFileAPI(file.serverId);
           setOpenState(false);
         }}
       />

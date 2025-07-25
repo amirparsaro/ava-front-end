@@ -3,23 +3,20 @@ export function toPersianDigits(input) {
 }
 
 export function timeToPersianDigits(input) {
-  return input
-    .split(":")
-    .map(toPersianDigits)
-    .join(":");
+  return input.split(":").map(toPersianDigits).join(":");
 }
 
 export function dateToPersianDigits(input) {
-  return input
-    .split("-")
-    .map(toPersianDigits)
-    .join("-");
+  if (typeof input !== "string" || input == "") {
+    return "";
+  }
+  return input.split("-").map(toPersianDigits).join("-");
 }
 
 export function getFileExtension(filePath) {
-  if (typeof filePath !== 'string') return null;
+  if (typeof filePath !== "string") return null;
 
-  const lastDotIndex = filePath.lastIndexOf('.');
+  const lastDotIndex = filePath.lastIndexOf(".");
   if (lastDotIndex === -1 || lastDotIndex === filePath.length - 1) {
     return null;
   }
