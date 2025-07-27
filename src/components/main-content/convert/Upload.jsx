@@ -15,11 +15,11 @@ import darkChainIcon from "../../../assets/images/chain-Icon-grey.svg";
 import TextReview from "./TextReview";
 import { Outlet, useNavigate } from "react-router-dom";
 import { InputContext } from "./InputContext";
+import { useSelector } from "react-redux";
 
 const Upload = () => {
+  const lastRouteToReview = useSelector((state) => state.lastRoute.value);
   const [option, setOption] = useState(1);
-  const [inputValue, setInputValue] = useState(null);
-  const [lastRouteToReview, setLastRouteToReview] = useState(null);
   const navigate = useNavigate();
 
   const isInReviewPage = window.location.pathname.endsWith("review");
@@ -27,26 +27,12 @@ const Upload = () => {
     if (isInReviewPage) {
       if (lastRouteToReview == "record") setOption(1);
       else if (lastRouteToReview == "link") setOption(3);
-      else setOption(3);
+      else setOption(2);
     }
   });
 
-  function lastRoute(route) {
-    if (route.endsWith("record")) setLastRouteToReview("record");
-    else if (route.endsWith("link")) setLastRouteToReview("link");
-    else if (route.endsWith("upload-file")) setLastRouteToReview("upload-file");
-    else setLastRouteToReview("record");
-  }
-
-  function handleInputValue(value) {
-    setInputValue(value);
-    navigate("/convert/upload/review");
-  }
-
   return (
-    <InputContext.Provider
-      value={{ handleInputValue, inputValue, lastRoute, lastRouteToReview }}
-    >
+    <InputContext.Provider value={{}}>
       <div className="upload-container">
         <div className="option-container">
           <Option

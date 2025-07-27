@@ -2,14 +2,18 @@ import "../../../App.css";
 import UploadButton from "./UploadButton";
 import { useState, useContext, useEffect } from "react";
 import { InputContext } from "./InputContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { uploadType } from "../../../features/lastRoute";
+import { fileURL } from "../../../features/file";
 
 const UploadFile = () => {
-  const { handleInputValue, lastRoute } = useContext(InputContext);
+  const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    lastRoute(location.pathname);
+    dispatch(uploadType("upload-file"));
   }, [location.pathname]);
 
   const handleUpload = async (file) => {
@@ -34,7 +38,9 @@ const UploadFile = () => {
       const fileUrl = data.secure_url;
 
       console.log("File URL:", fileUrl);
-      handleInputValue(fileUrl);
+      dispatch(fileURL(fileUrl));
+      navigate("/convert/upload/review");
+      
     } catch (error) {
       console.error("Error uploading file:", error);
     }

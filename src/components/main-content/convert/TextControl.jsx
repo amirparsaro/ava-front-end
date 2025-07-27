@@ -54,14 +54,6 @@ const TextControl = ({ file, onOptionChange, onRestart, color }) => {
     if (onRestart) onRestart(true);
   }
 
-  useEffect(() => {
-    console.log(option);
-    if (location.pathname.endsWith("record")) setOption(1);
-    else if (location.pathname.endsWith("upload-file")) setOption(2);
-    else setOption(3);
-    console.log("useEffect ran", location.pathname);
-  }, [location.pathname]);
-
   return (
     <div className="text-control-container">
       <Snackbar
