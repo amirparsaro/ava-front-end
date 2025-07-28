@@ -37,7 +37,6 @@ const TextReview = () => {
 
   useEffect(() => {
     fetchFile();
-    console.log(inputValue);
   }, [inputValue]);
 
   function handleRestart(shouldRestart) {
@@ -49,7 +48,13 @@ const TextReview = () => {
   return (
     <div
       className="text-review-container"
-      style={{ border: `2px solid ${color}` }}
+      style={{
+        border: `2px solid ${color}`,
+        borderTopRightRadius: lastRouteToReview == "record" ? 0 : "15px",
+        borderTopLeftRadius: "15px",
+        borderBottomLeftRadius: "15px",
+        borderBottomRightRadius: "15px",
+      }}
     >
       <div className="review-padding">
         <TextControl

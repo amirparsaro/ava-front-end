@@ -164,7 +164,7 @@ const ArchiveRow = ({ file, deleteFile, setSelectedIndex }) => {
         <img src={handleUploadTypeIcon(file.uploadType)} alt="icon" />
         <p className="row-first">{file.name}</p>
         <p>{dateToPersianDigits(file.date)}</p>
-        <p>{getFileExtension(file.name)}</p>
+        <p>{getFileExtension(file.url)}</p>
         <p>{duration}</p>
 
         <div className="tooltip">

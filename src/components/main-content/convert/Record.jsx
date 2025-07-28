@@ -35,7 +35,6 @@ const Record = () => {
       const data = await res.json();
       const fileUrl = data.secure_url;
 
-      console.log("File URL:", fileUrl);
       setLink(fileUrl);
       dispatch(fileURL(fileUrl));
       navigate("/convert/upload/review");

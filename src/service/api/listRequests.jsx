@@ -16,6 +16,7 @@ export async function listRequests() {
     return files;
   } catch (error) {
     console.error(error);
+    throw new Error(`Error occurred`);
   }
 }
 

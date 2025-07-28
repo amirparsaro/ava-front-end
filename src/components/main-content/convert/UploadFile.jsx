@@ -37,7 +37,6 @@ const UploadFile = () => {
       const data = await res.json();
       const fileUrl = data.secure_url;
 
-      console.log("File URL:", fileUrl);
       dispatch(fileURL(fileUrl));
       navigate("/convert/upload/review");
       

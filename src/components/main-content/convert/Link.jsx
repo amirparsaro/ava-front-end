@@ -10,7 +10,6 @@ import { fileURL } from "../../../features/file";
 
 const Link = () => {
   const dispatch = useDispatch();
-  const { handleInputValue } = useContext(InputContext);
   const location = useLocation();
   const navigate = useNavigate();
 
