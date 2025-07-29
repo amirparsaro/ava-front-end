@@ -1,1 +1,0 @@
-let WebSocketExample = new WebSocket("wss://harf.roshan-ai.ir/api/requests/");
