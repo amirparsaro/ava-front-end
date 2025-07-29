@@ -574,7 +574,6 @@
 }
 
 .simple-text-container p {
-  color: #000000;
   font-size: 16px;
   text-align: right;
   font-family: IRANYekan, sans-serif;
@@ -619,7 +618,6 @@
 .time-box-container p {
   margin: 0;
   font-size: 16px;
-  color: #000000;
   font-family: IRANYekan, sans-serif;
 }
 

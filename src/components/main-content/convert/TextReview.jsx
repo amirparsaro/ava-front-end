@@ -64,8 +64,8 @@ const TextReview = () => {
           onOptionChange={setOption}
           onRestart={handleRestart}
         />
-        {option === 1 && <SimpleText file={uploadFile} />}
-        {option === 2 && <TimedText file={uploadFile} />}
+        {option === 1 && <SimpleText file={uploadFile} color={color} />}
+        {option === 2 && <TimedText file={uploadFile} color={color} />}
         {uploadFile != null && <Player color={color} file={uploadFile} />}
       </div>
     </div>

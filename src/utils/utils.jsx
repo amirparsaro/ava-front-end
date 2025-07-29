@@ -23,3 +23,17 @@ export function getFileExtension(filePath) {
 
   return filePath.substring(lastDotIndex + 1).toLowerCase();
 }
+
+export function timeToSeconds(time) {
+  let splitTime = time.split(":");
+  let power = 3600;
+  let sum = 0;
+
+  for (const part of splitTime) {
+    let intPart = parseInt(part, 10);
+    sum += intPart * power;
+    power /= 60;
+  }
+
+  return sum;
+}

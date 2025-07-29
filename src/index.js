@@ -8,11 +8,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import lastRouteReducer from "./features/lastRoute";
 import fileURLReducer from "./features/file";
+import currentTimeReducer from "./features/currentTime";
 
 const store = configureStore({
   reducer: {
     lastRoute: lastRouteReducer,
     fileURL: fileURLReducer,
+    currentTime: currentTimeReducer,
   },
 });
 
