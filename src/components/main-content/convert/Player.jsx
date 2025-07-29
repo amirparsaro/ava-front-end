@@ -5,8 +5,11 @@ import volumeIcon from "../../../assets/images/volume-icon.svg";
 import { useRef, useState, useEffect } from "react";
 import { timeToPersianDigits } from "../../../utils/utils";
 import playIcon from "../../../assets/images/play-icon.svg";
+import { useDispatch } from "react-redux";
+import { time } from "../../../features/currentTime";
 
 const Player = ({ color, file }) => {
+  const dispatch = useDispatch();
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(0.5);
@@ -48,6 +51,10 @@ const Player = ({ color, file }) => {
       audio.removeEventListener("loadedmetadata", setAudioDuration);
     };
   }, []);
+
+  useEffect(() => {
+    dispatch(time(currentTime));
+  }, [currentTime, dispatch]);
 
   useEffect(() => {
     const audio = audioRef.current;

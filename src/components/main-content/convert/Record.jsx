@@ -2,14 +2,17 @@ import "../../../App.css";
 import RecordButton from "./RecordButton";
 import { useState, useContext, useEffect } from "react";
 import { InputContext } from "./InputContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { uploadType } from "../../../features/lastRoute";
+import { fileURL } from "../../../features/file";
 
 const Record = () => {
+  const dispatch = useDispatch();
   const [audioUrl, setAudioUrl] = useState(null);
   const [link, setLink] = useState("");
   const location = useLocation();
-
-  const { handleInputValue, lastRoute } = useContext(InputContext);
+  const navigate = useNavigate();
 
   const handleUpload = async (file) => {
     if (!file) return;
@@ -32,9 +35,9 @@ const Record = () => {
       const data = await res.json();
       const fileUrl = data.secure_url;
 
-      console.log("File URL:", fileUrl);
       setLink(fileUrl);
-      handleInputValue(fileUrl);
+      dispatch(fileURL(fileUrl));
+      navigate("/convert/upload/review");
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -48,7 +51,7 @@ const Record = () => {
   };
 
   useEffect(() => {
-    lastRoute(location.pathname);
+    dispatch(uploadType("record"));
   }, [location.pathname]);
 
   return (

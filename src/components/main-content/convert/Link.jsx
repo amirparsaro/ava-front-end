@@ -3,18 +3,23 @@ import "../../../App.css";
 import LinkForm from "./LinkForm";
 import { useContext, useEffect } from "react";
 import { InputContext } from "./InputContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { uploadType } from "../../../features/lastRoute";
+import { fileURL } from "../../../features/file";
 
 const Link = () => {
-  const { handleInputValue, lastRoute } = useContext(InputContext);
+  const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   function handleInputChange(value) {
-    handleInputValue(value);
+    dispatch(fileURL(value));
+    navigate("/convert/upload/review");
   }
 
   useEffect(() => {
-    lastRoute(location.pathname);
+    dispatch(uploadType("link"));
   }, [location.pathname]);
 
   return (

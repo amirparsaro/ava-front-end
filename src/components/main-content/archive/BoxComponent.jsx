@@ -36,8 +36,8 @@ const BoxComponent = ({ file, boxHeightCount, color }) => {
           isSelected={option === 2}
         />
       </div>
-      {option === 1 ? <SimpleText file={file} /> : null}
-      {option === 2 ? <TimedText file={file} /> : null}
+      {option === 1 ? <SimpleText file={file} color={color} /> : null}
+      {option === 2 ? <TimedText file={file} color={color} /> : null}
       <div className="flex justify-center">
         <div className="flex justify-center w-3/4 my-2">
           <Player color={color} file={file} />

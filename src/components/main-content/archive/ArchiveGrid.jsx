@@ -26,11 +26,35 @@ const ArchiveGrid = () => {
 
   useEffect(() => {
     async function fetchFiles() {
-      const fetchedFiles = await listRequests();
-      if (fetchedFiles) {
+      try {
+        const fetchedFiles = await listRequests();
+        if (fetchedFiles) {
+          setFiles(fetchedFiles);
+        }
+      } catch (error) {
+        let file = {
+          serverId: 0,
+          id: 0,
+          uploadType: "link",
+          name: "تست",
+          url: "https://i.ganjoor.net/a2/41417.mp3",
+          date: "2025-07-27",
+          duration: "00:00:07",
+          segments: [],
+        };
+
+        let segment = {
+          start: "00:00:00",
+          end: "00:00:07",
+          text: "تست",
+        };
+
+        file.segments[0] = segment;
+        const fetchedFiles = [file];
         setFiles(fetchedFiles);
       }
     }
+
     fetchFiles();
   }, []);
 
@@ -81,7 +105,7 @@ const ArchiveGrid = () => {
       } else if (index >= 5) {
         setBoxPosition("top");
         setBoxHeightCount(5);
-      } else if (index == 4) {
+      } else if (index === 4) {
         setBoxPosition("top");
         setBoxHeightCount(4);
       } else {

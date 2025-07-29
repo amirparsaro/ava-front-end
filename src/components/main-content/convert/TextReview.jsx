@@ -9,8 +9,11 @@ import { sendToTranscribe } from "../../../service/api/sendToTranscribe";
 import { useContext } from "react";
 import { InputContext } from "./InputContext";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const TextReview = () => {
+  const lastRouteToReview = useSelector((state) => state.lastRoute.value);
+  const inputValue = useSelector((state) => state.fileURL.value);
   const [option, setOption] = useState(1);
   const [uploadFile, setUploadFile] = useState(null);
   const [color, setColor] = useState(null);
@@ -21,8 +24,6 @@ const TextReview = () => {
     const file = await sendToTranscribe(inputValue);
     setUploadFile(file);
   }
-
-  const { inputValue, lastRouteToReview } = useContext(InputContext);
 
   useEffect(() => {
     if (lastRouteToReview == "record") {
@@ -47,7 +48,13 @@ const TextReview = () => {
   return (
     <div
       className="text-review-container"
-      style={{ border: `2px solid ${color}` }}
+      style={{
+        border: `2px solid ${color}`,
+        borderTopRightRadius: lastRouteToReview == "record" ? 0 : "15px",
+        borderTopLeftRadius: "15px",
+        borderBottomLeftRadius: "15px",
+        borderBottomRightRadius: "15px",
+      }}
     >
       <div className="review-padding">
         <TextControl
@@ -57,8 +64,8 @@ const TextReview = () => {
           onOptionChange={setOption}
           onRestart={handleRestart}
         />
-        {option === 1 && <SimpleText file={uploadFile} />}
-        {option === 2 && <TimedText file={uploadFile} />}
+        {option === 1 && <SimpleText file={uploadFile} color={color} />}
+        {option === 2 && <TimedText file={uploadFile} color={color} />}
         {uploadFile != null && <Player color={color} file={uploadFile} />}
       </div>
     </div>

@@ -1,20 +1,38 @@
+import { useEffect } from "react";
 import "../../../App.css";
+import { useSelector } from "react-redux";
+import { timeToSeconds } from "../../../utils/utils";
 
-const SimpleText = ({ file }) => {
+const SimpleText = ({ file, color }) => {
+  const time = useSelector((state) => state.currentTime.value);
+
+  useEffect(() => {
+  }, [time]); // فقط برای تست: هر وقت time آپدیت شد، لاگ بزن
+
   if (!file || !Array.isArray(file.segments)) {
     return <p>در حال بارگذاری... </p>;
   }
-  function formatText(file) {
-    let segments = "";
-    for (const segment of file.segments) {
-      segments += segment.text + " ";
+
+  function setColor(color, time, start, end) {
+    if (timeToSeconds(start) <= time && time <= timeToSeconds(end)) {
+      return color;
     }
-    return segments;
+    return "#000000";
   }
 
   return (
     <div className="simple-text-container">
-      <p>{formatText(file)}</p>
+      {file.segments.map((item, index) => (
+        <p
+          style={{
+            color: setColor(color, time, item.start, item.end),
+            display: "inline",
+          }}
+          key={index}
+        >
+          {item.text + " "}
+        </p>
+      ))}
     </div>
   );
 };

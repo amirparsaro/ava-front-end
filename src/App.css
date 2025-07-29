@@ -574,7 +574,6 @@
 }
 
 .simple-text-container p {
-  color: #000000;
   font-size: 16px;
   text-align: right;
   font-family: IRANYekan, sans-serif;
@@ -584,7 +583,6 @@
 .text-review-container {
   height: 390px;
   width: 95%;
-  border-radius: 15px;
   top: -2px;
   display: flex;
   justify-content: space-between;
@@ -620,7 +618,6 @@
 .time-box-container p {
   margin: 0;
   font-size: 16px;
-  color: #000000;
   font-family: IRANYekan, sans-serif;
 }
 
